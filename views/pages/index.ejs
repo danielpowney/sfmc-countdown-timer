@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<link rel="stylesheet" type="text/css" href="/salesforce-ux/styles/salesforce-lightning-design-system.min.css" />
+	<link rel="stylesheet" type="text/css" href="/css/styles.css" />
+	<script src="/jquery/jquery.min.js"></script>
+	<script src="/blocksdk/blocksdk.js"></script>
+	<script>
+		var sdk = new window.sfdc.BlockSDK();
+
+		// getContent() - get content of the block -. returns the HTML string
+		// setContent() - pass content string and a callback and a callback, editor updates in real-time
+		// getData() save cutom metadata
+		// setData() 
+
+		sdk.getContent(function (content) {
+			content += 'hello';
+			sdk.setContent(content, function (setContent) {
+				return 'hello :)';
+			});
+		});
+	</script>
+</head>
+<body>
+
+	<img src="<%= gif %>" />	
+
+	<div class="slds-form-element">
+		<label class="slds-form-element__label" for="form-element-03">
+		<abbr class="slds-required" title="required">* </abbr>Form Label</label>
+		<div class="slds-form-element__control">
+			<input type="datetime-local" id="end-datetime" name="end-datetime" class="slds-input" />
+		</div>
+	</div>
+
+	
+
+</div>
+
+
+</body>
