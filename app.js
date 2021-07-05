@@ -12,7 +12,28 @@ const port = process.env.PORT || 3000;
  */
 var ejs = require("ejs");
 var express = require("express");
+var session = require('express-session');
 const app = express();
+
+
+// init session 
+// unique id for session maintained by default in memory on the HTTP server
+/*if (process.env.PORT) { // heroku !!
+    // TODO
+    debug("using redis :)");
+} else { */ // localhost
+    app.use(session({
+        proxy: false,
+        secret: 'sfmc-search-replace-1234',
+        resave: false,
+        saveUninitialized: true,
+        cookie: { secure: true }
+    }));
+
+    // no worker container
+    debug("not using heroku!!!");
+//}
+
 
 
 app.set("views", "./views") // where the template files are located
@@ -34,7 +55,12 @@ var server;
 if (process.env.PORT) { // heroku !!
 	server = require('http').createServer(app);
 } else {  // localhost !!
-	server = require('http').createServer(app);
+	const fs = require('fs');
+	server = require('https').createServer({
+	    key: fs.readFileSync('./key.pem'),
+	    cert: fs.readFileSync('./cert.pem'),
+	    passphrase: 'hello'
+	}, app);
 }
 server.listen(port, () => {
     debug("server listening at port " + port + "!");

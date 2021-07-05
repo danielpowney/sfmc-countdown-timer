@@ -1,40 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+	<meta charset="utf-8" />
+	<meta http-equiv="x-ua-compatible" content="ie=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta name="robots" content="noindex" />
+	<title>SFMC Countdown Timer Content Block</title>
 	<link rel="stylesheet" type="text/css" href="/salesforce-ux/styles/salesforce-lightning-design-system.min.css" />
 	<link rel="stylesheet" type="text/css" href="/css/styles.css" />
 	<script src="/jquery/jquery.min.js"></script>
 	<script src="/blocksdk/blocksdk.js"></script>
-	<script>
-		var sdk = new window.sfdc.BlockSDK();
-
-		// getContent() - get content of the block -. returns the HTML string
-		// setContent() - pass content string and a callback and a callback, editor updates in real-time
-		// getData() save cutom metadata
-		// setData() 
-
-		sdk.getContent(function (content) {
-			content += 'hello';
-			sdk.setContent(content, function (setContent) {
-				return 'hello :)';
-			});
-		});
-	</script>
+	<script src="/scripts/main.js"></script>
 </head>
-<body>
+<body>	
 
-	<img src="<%= gif %>" />	
-
-	<div class="slds-form-element">
-		<label class="slds-form-element__label" for="form-element-03">
-		<abbr class="slds-required" title="required">* </abbr>Form Label</label>
-		<div class="slds-form-element__control">
-			<input type="datetime-local" id="end-datetime" name="end-datetime" class="slds-input" />
+	<form>
+		<div class="slds-form-element">
+			<label class="slds-form-element__label" for="form-element-03">
+			<abbr class="slds-required" title="required">* </abbr>Choose End Date</label>
+			<div class="slds-form-element__control">
+				<input type="datetime-local" id="sfmcct-end-date" name="end-date" class="slds-input" />
+			</div>
 		</div>
-	</div>
+		
+		<button id="sfmcct-generate-btn" class="slds-button slds-button_neutral">Generate</button>
 
-	
-
+</form>
 </div>
 
 

@@ -1,0 +1,11 @@
+body {
+	padding: 10px;
+}
+
+#sfmc-generate-btn {
+	margin-top: 10px;
+}
+
+#sfmcct-end-date {
+	max-width: 240px;
+}
